@@ -8,6 +8,6 @@ You need to verify your hash dump file from DC is in the format name\\domain:has
 
 The output from hashcat in hash:pass format.
 
-USAGE:  python combine.py <originaldumphashfile> <hashcatcrackedhashfile>
+USAGE:  python combine.py "originaldumphashfile" "hashcatcrackedhashfile"
 
 
