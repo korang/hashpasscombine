@@ -10,4 +10,10 @@ The output from hashcat in hash:pass format.
 
 USAGE:  python combine.py "originaldumphashfile" "hashcatcrackedhashfile"
 
+Output from script will be in user:pass format.
+
+TODO:
+
+1) Accept input to write out results to file.
+
 
