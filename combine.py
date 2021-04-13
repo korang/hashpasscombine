@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 import sys
 import argparse
@@ -9,6 +11,7 @@ crackedhashdict = {}
 parser = argparse.ArgumentParser(description="Parse and match values from a NTLM hash dump to cracked passwords from Hashcat")
 parser.add_argument("Input_Hash_File", help="The dump file you pulled from the DC in name\\domain:hash format")
 parser.add_argument("Cracked_Hash_File", help="The output from hashcat in hash:pass format")
+parser.add_argument("-o", "--output", type=str, help="Output results to the specified file. Default is STDOUT.")
 
 arguments = parser.parse_args()
 orighashfile = arguments.Input_Hash_File
@@ -38,8 +41,12 @@ common_keys = set(k1).intersection(set(k2))
 
 for key in common_keys:
     if orighashdict[key] != crackedhashdict[key]:
-        
-        # Print user:pass to screen
-        print (orighashdict[key] + ":" + crackedhashdict[key])
-
-
+        if arguments.output:
+            out_file = arguments.output
+            print("[+] Writing output to file " + out_file + "for user: " + orighashdict[key])
+            outputstream = open(out_file, "a+")
+            outputstream.writelines(orighashdict[key] + ":" + crackedhashdict[key] + "\n")
+            outputstream.close()
+        else:
+            # Print user:pass to screen
+            print (orighashdict[key] + ":" + crackedhashdict[key])
