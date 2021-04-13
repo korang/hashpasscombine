@@ -14,6 +14,7 @@ Output from script will be in user:pass format.
 
 TODO:
 
-1) Accept input to write out results to file.
+1) ~~Accept input to write out results to file.~~
+2) Figure out why the output is in reverse order (if it matters)
 
 
