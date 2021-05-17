@@ -50,21 +50,17 @@ while i < (orighashcount+1):
         oa, ob = orighashdict[i]
         ca, cb = crackedhashdict[ii]
         if ob == ca:
-            print (oa+':'+ob+'=='+ca+':'+cb)
-            ii = ii + 1
+            if arguments.output:
+                out_file = arguments.output
+                print ("[+] Writing output to file " + out_file + "for user: " + oa)
+                outputstream = open(out_file, "a+")
+                outputstream.writelines(oa + ":" + ca + ":" + cb + "\n")
+                outputstream.close()
+                ii = ii + 1
+            else:
+                # Print USER:PASS to screen.
+                print (oa+ ':' + cb)
+                ii = ii + 1
         else:
             ii = ii +1
     i = i +1
-
-
-#for key in common_keys:
-#    if orighashdict[key] != crackedhashdict[key]:
-#        if arguments.output:
-#            out_file = arguments.output
-#            print("[+] Writing output to file " + out_file + "for user: " + orighashdict[key])
-#            outputstream = open(out_file, "a+")
-#            outputstream.writelines(orighashdict[key] + ":" + crackedhashdict[key] + "\n")
-#            outputstream.close()
-#        else:
-#            # Print user:pass to screen
-#            print (orighashdict[key] + ":" + crackedhashdict[key])
