@@ -8,7 +8,7 @@ You need to verify your hash dump file from DC is in the format name\\domain:has
 
 The output from hashcat in hash:pass format.
 
-USAGE:  python3 hashpasscombine.py "originaldumphashfile" "hashcatcrackedhashfile"
+USAGE:  python3 hashpasscombine.py "originaldumphashfile" "hashcatcrackedhashfile" ( -o "outputfile")
 
 Output from script will be in user:pass format.
 
